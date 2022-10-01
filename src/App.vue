@@ -2,7 +2,7 @@
   <div class="min-h-full">
     <Disclosure as="nav" class="bg-gray-800 sticky top-0 z-50" v-slot="{ open }">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
+        <div class="flex items-center justify-center h-16">
           <div class="flex items-center">
             <div class="hidden md:block">
               <div class="flex items-baseline space-x-4">
@@ -59,7 +59,7 @@ const search = async (e) => {
   if (e.key == "Enter") {
   try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?zip=${cityZip.value},US&appid=d2c9aaafb6c5d4d2632592ce88154c5f&units=imperial`
+        `https://api.openweathermap.org/data/2.5/weather?zip=${cityZip.value},US&appid={youropenweathermapid}&units=imperial`
       )
       store.cities = res.data.name
       store.weatherData = res.data.main
