@@ -2,9 +2,19 @@
 
 #### Enter a US Zip Code to search for weather by city. Click Recently Searched to view all our your searches (stored locally with Pinia state management)
 
-#### Install: npm install
+<img width="800" alt="Screen Shot 2022-10-01 at 3 02 30 PM" src="https://user-images.githubusercontent.com/49799116/193426406-c34be7c3-4a2b-417f-8e83-23e94b79bf41.png">
 
-#### Run: npm run dev
+## Project setup
+```
+npm install
+```
 
+### Compiles and hot-reloads for development
+```
+npm run dev
+```
 
-<img width="1080" alt="Screen Shot 2022-10-01 at 2 16 38 PM" src="https://user-images.githubusercontent.com/49799116/193424907-6d9bf1b2-6af6-4db9-91ef-2ac67cf86069.png">
+### Compiles and minifies for production
+```
+npm run build
+```
