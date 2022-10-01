@@ -1,7 +1,3 @@
-# Vue 3 + Vite
+# Weather Dashboard with Vue 3, TailwindCSS, and OpenWeatherMap API
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+<img width="1235" alt="Screen Shot 2022-10-01 at 2 05 53 PM" src="https://user-images.githubusercontent.com/49799116/193424625-d5d639df-0fb2-4e4d-a744-968c7917e36d.png">
