@@ -5,6 +5,7 @@ export const useStore = defineStore({
   state: () => ({
     cities: {},
     weatherData: {},
+    dateTime: null,
     recentSearches: []
   }),
   getters: {
