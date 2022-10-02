@@ -2,7 +2,7 @@
   <div class="min-h-full">
     <Disclosure as="nav" class="bg-gray-800 sticky top-0 z-50" v-slot="{ open }">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-center h-16">
+        <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="hidden md:block">
               <div class="flex items-baseline space-x-4">
