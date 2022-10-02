@@ -45,7 +45,6 @@
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
-import states from './data/states'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from './store';
