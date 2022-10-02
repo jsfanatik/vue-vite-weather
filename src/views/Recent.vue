@@ -41,6 +41,7 @@ const recentCities = computed(() => {
 
 const openRecent = async (recent) => {
   try {
+    // after forking, add your OpenWeatherMap key to the URL
     const res = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${recent}&appid={youropenweathermapidhere}&units=imperial`
     );

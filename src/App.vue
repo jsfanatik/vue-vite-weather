@@ -58,7 +58,10 @@
       </DisclosurePanel>
     </Disclosure>
 
-    <main class="min-h-screen bg-amber-300 relative py-16" :class="[weatherValues.temp < 60 ? 'bg-cyan-300' : 'bg-amber-300']">
+    <main
+      class="min-h-screen bg-amber-300 relative py-16"
+      :class="[weatherValues.temp < 60 ? 'bg-cyan-300' : 'bg-amber-300']"
+    >
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- Replace with your content -->
         <router-view />
@@ -69,12 +72,12 @@
 </template>
 
 <script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { MenuIcon, XIcon } from '@heroicons/vue/outline'
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { useStore } from './store';
-import axios from 'axios'
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
+import { MenuIcon, XIcon } from "@heroicons/vue/outline";
+import { ref, computed } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "./store";
+import axios from "axios";
 
 const cityZip = ref("");
 const router = useRouter();
@@ -82,12 +85,13 @@ const store = useStore();
 
 // return rounded weather values from store
 const weatherValues = computed(() => {
-  return store.roundedValues
-})
+  return store.roundedValues;
+});
 
 const search = async (e) => {
   if (e.key == "Enter") {
     try {
+      // after forking, add your OpenWeatherMap key to the URL
       const res = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?zip=${cityZip.value},US&appid={youropenweathermapidhere}&units=imperial`
       );
