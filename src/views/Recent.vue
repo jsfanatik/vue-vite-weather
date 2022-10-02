@@ -32,7 +32,7 @@ const recentCities = computed(() => {
 const openRecent = async (recent) => {
   try {
     const res = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${recent}&appid=d2c9aaafb6c5d4d2632592ce88154c5f&units=imperial`
+      `https://api.openweathermap.org/data/2.5/weather?q=${recent}&appid={youropenweathermapidhere}&units=imperial`
     )
     store.cities = res.data.name
     store.weatherData = res.data.main
