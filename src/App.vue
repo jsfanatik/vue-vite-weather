@@ -59,11 +59,10 @@ const search = async (e) => {
   if (e.key == "Enter") {
   try {
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?zip=${cityZip.value},US&appid={youropenweathermapid}&units=imperial`
+        `https://api.openweathermap.org/data/2.5/weather?zip=${cityZip.value},US&appid=d2c9aaafb6c5d4d2632592ce88154c5f&units=imperial`
       )
       store.cities = res.data.name
       store.weatherData = res.data.main
-
       const date = Date(res.data.dt).toLocaleString("en-US")
       store.dateTime = date.toString()
 

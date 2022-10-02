@@ -24,11 +24,10 @@ import axios from 'axios'
 
 const router = useRouter()
 const store = useStore()
-const recentCities = computed(() => recentSearch())
 
-const recentSearch = () => {
+const recentCities = computed(() => {
   return store.recentSearches
-}
+})
 
 const openRecent = async (recent) => {
   try {
