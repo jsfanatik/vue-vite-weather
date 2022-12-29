@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useStore = defineStore({
   id: 'store',
   state: () => ({
+    cityZip: null,
     cities: {},
     weatherData: {},
     dateTime: null,
@@ -21,10 +22,20 @@ export const useStore = defineStore({
     storeRecentSearch() {
       const allSearches = []
       allSearches.push(this.cities)
+
       allSearches.forEach((item) => {
-        if (!this.recentSearches.includes(item)) {
-          this.recentSearches.push(item)
+        // handle 5 items in array at a time
+        if (!this.recentSearches.includes(item) && this.recentSearches.length > 4) {
+          // add item to beginning of array
+          this.recentSearches.unshift(item)
+          // remove item from end of array
+          this.recentSearches.pop()
+          console.log('length', this.recentSearches)
         }
+        else if (!this.recentSearches.includes(item)) {
+          this.recentSearches.unshift(item)
+          console.log('unshift', this.recentSearches)
+        } 
       })
     }
   }

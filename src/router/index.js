@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Weather from "../views/Weather.vue";
-import Recent from "../views/Recent.vue"
+import Forecast from "../views/Forecast.vue"
 import Error from "../views/Error.vue";
 import Welcome from "../views/Welcome.vue";
 
@@ -18,9 +18,9 @@ const routes = [
     props: true
   },
   {
-    path: "/recent-searches",
-    name: "Recent",
-    component: Recent,
+    path: "/forecast",
+    name: "Forecast",
+    component: Forecast,
     props: true
   },
   {
