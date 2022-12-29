@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#app.warm {
+    background: 
+        linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),/* the gradient on top, adjust color and opacity to your taste */
+        url("./assets/warm-bg.jpeg");
+    background-size: cover;
+    background-position: top;
+    backdrop-filter: brightness(40%);
+    transition: 0.4s;
+}
+
+#app.cold {
+    background: 
+        linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),/* the gradient on top, adjust color and opacity to your taste */
+        url("./assets/cold-bg.jpeg");
+    background-size: cover;
+    background-position: top;
+    backdrop-filter: brightness(60%);
+    transition: 0.4;
+}

@@ -15,13 +15,16 @@
 
           <div style="background-color: rgba(255, 255, 255, 0.2);" class="relative text-white h-full p-12 shadow-2xl overflow-hidden sm:rounded-lg">
             
-              <!-- <div class="absolute inset-y-0 right-0 w-16">
-                  <ul class="flex flex-col p-4">
-                    <li class="flex cursor-pointer" @click="openModal">
-                      <ClockIcon class="w-8 h-8 text-white"/>
-                    </li>
-                  </ul>
-              </div> -->
+            <div class="absolute inset-y-0 right-4 top-4 w-16">
+                <ul class="flex flex-wrap">
+                  <li class="flex cursor-pointer" @click="openModal">
+                    <ClockIcon class="w-8 h-8 text-white"/>
+                  </li>
+                  <li class="flex cursor-pointer" @click="openModal">
+                    <CalendarIcon class="w-8 h-8 text-white"/>
+                  </li>
+                </ul>
+            </div>
 
             <h2 class="text-4xl font-extrabold tracking-tight">{{ cities }}</h2>
             <p class="mt-2">{{ dateTime }}</p>
@@ -44,6 +47,9 @@
               </div>
             </dl>
           </div>
+
+          <RecentDialog :isOpen="isOpen" @closeModal="closeModal"/>
+
         </div>
       </div>
     </div>
@@ -54,10 +60,12 @@
 import { computed, onMounted, ref } from 'vue'
 import { useStore } from '../store';
 import { TransitionRoot } from '@headlessui/vue'
-import { ClockIcon, XIcon } from "@heroicons/vue/outline";
+import { ClockIcon, XIcon, CalendarIcon } from "@heroicons/vue/outline";
+import RecentDialog from '../components/RecentDialog.vue'
 
 const store = useStore()
 const isShowing = ref(true)
+const isOpen = ref(false)
 
 // return rounded weather values from store
 const weatherValues = computed(() => {
@@ -73,6 +81,15 @@ const cities = computed(() => {
 const dateTime = computed(() => {
   return store.dateTime
 })
+
+const closeModal = () => {
+  isOpen.value = false
+}
+
+const openModal = () => {
+  console.log('isOpen')
+  isOpen.value = true
+}
 
 onMounted(() => {
   isShowing.value = false
