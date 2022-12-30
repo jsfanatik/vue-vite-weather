@@ -31,7 +31,7 @@ const cityZip = computed(() => {
 
 onMounted(async () => {
   const res = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?zip=${store.cityZip},US&appid=d2c9aaafb6c5d4d2632592ce88154c5f`
+      `https://api.openweathermap.org/data/2.5/forecast?zip=${store.cityZip},US&appid={yourapikeyhere}`
     );
 
     // const newData = []
