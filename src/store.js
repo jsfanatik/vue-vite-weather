@@ -21,18 +21,22 @@ export const useStore = defineStore({
   actions: {
     storeRecentSearch() {
       const allSearches = []
-      allSearches.push(this.cities)
+      allSearches.push(this.cityZip)
 
       allSearches.forEach((item) => {
-        // handle 5 items in array at a time
-        if (!this.recentSearches.includes(item) && this.recentSearches.length > 4) {
-          // add item to beginning of array
-          this.recentSearches.unshift(item)
-          // remove item from end of array
-          this.recentSearches.pop()
-          console.log('length', this.recentSearches)
-        }
-        else if (!this.recentSearches.includes(item)) {
+        // // handle 5 items in array at a time
+        // if (!this.recentSearches.includes(item) && this.recentSearches.length > 4) {
+        //   // add item to beginning of array
+        //   this.recentSearches.unshift(item)
+        //   // remove item from end of array
+        //   this.recentSearches.pop()
+        //   console.log('length', this.recentSearches)
+        // }
+        // else if (!this.recentSearches.includes(item)) {
+        //   this.recentSearches.unshift(item)
+        //   console.log('unshift', this.recentSearches)
+        // } 
+        if (!this.recentSearches.includes(item)) {
           this.recentSearches.unshift(item)
           console.log('unshift', this.recentSearches)
         } 

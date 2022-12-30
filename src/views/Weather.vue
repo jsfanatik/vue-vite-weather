@@ -3,24 +3,14 @@
     <div class="mx-auto max-w-4xl px-6 mt-8">
       <div class="text-left">        
         <div class="p-6">
-
-          <!-- <div class="weather-box">
-            <div class="temp">{{ weatherValues.temp }}°C</div>
-          </div> -->
-
-          <!-- <div class="text-center text-white text-5xl">
-            <h2 class="font-bold tracking-tight">{{ cities }}</h2>
-          </div> -->
-
-
           <div style="background-color: rgba(255, 255, 255, 0.2);" class="relative text-white h-full p-12 shadow-2xl overflow-hidden sm:rounded-lg">
             
-            <div class="absolute inset-y-0 right-5 top-4 w-16">
+            <div class="absolute inset-y-0 right-0 top-4 w-14">
               <ul class="flex gap-x-2">
-                <li class="flex cursor-pointer" @click="openModal">
+                <!-- <li class="flex cursor-pointer" @click="openModal">
                   <ClockIcon class="w-8 h-8 text-white"/>
-                </li>
-                <li class="flex cursor-pointer" @click="gotoForecast">
+                </li> -->
+                <li class="flex cursor-pointer" @click="goToRecent">
                   <CalendarIcon class="w-8 h-8 text-white"/>
                 </li>
               </ul>
@@ -93,8 +83,8 @@ const openModal = () => {
   isOpen.value = true
 }
 
-const gotoForecast = () => {
-  router.push({ path: 'forecast' })
+const goToRecent = () => {
+  router.push({ path: 'recent' })
 }
 // 
 
