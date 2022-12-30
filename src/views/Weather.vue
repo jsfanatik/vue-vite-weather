@@ -15,12 +15,12 @@
 
           <div style="background-color: rgba(255, 255, 255, 0.2);" class="relative text-white h-full p-12 shadow-2xl overflow-hidden sm:rounded-lg">
             
-            <div class="absolute inset-y-0 right-4 top-4 w-16">
-                <ul class="flex flex-wrap">
+            <div class="absolute inset-y-0 right-5 top-4 w-16">
+                <ul class="flex gap-x-2">
                   <li class="flex cursor-pointer" @click="openModal">
                     <ClockIcon class="w-8 h-8 text-white"/>
                   </li>
-                  <li class="flex cursor-pointer" @click="openModal">
+                  <li class="flex cursor-pointer">
                     <CalendarIcon class="w-8 h-8 text-white"/>
                   </li>
                 </ul>
