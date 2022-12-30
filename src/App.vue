@@ -70,7 +70,7 @@ const search = async (e) => {
     try {
       // after forking, add your OpenWeatherMap key to the URL
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?zip=${cityZip.value},US&appid={yourapikeyhere}&units=imperial`
+        `https://api.openweathermap.org/data/2.5/weather?zip=${cityZip.value},US&appid=d2c9aaafb6c5d4d2632592ce88154c5f&units=imperial`
       );
       store.cityZip = cityZip.value
       store.cities = res.data.name;

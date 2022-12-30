@@ -16,14 +16,14 @@
           <div style="background-color: rgba(255, 255, 255, 0.2);" class="relative text-white h-full p-12 shadow-2xl overflow-hidden sm:rounded-lg">
             
             <div class="absolute inset-y-0 right-5 top-4 w-16">
-                <ul class="flex gap-x-2">
-                  <li class="flex cursor-pointer" @click="openModal">
-                    <ClockIcon class="w-8 h-8 text-white"/>
-                  </li>
-                  <li class="flex cursor-pointer">
-                    <CalendarIcon class="w-8 h-8 text-white"/>
-                  </li>
-                </ul>
+              <ul class="flex gap-x-2">
+                <li class="flex cursor-pointer" @click="openModal">
+                  <ClockIcon class="w-8 h-8 text-white"/>
+                </li>
+                <li class="flex cursor-pointer" @click="gotoForecast">
+                  <CalendarIcon class="w-8 h-8 text-white"/>
+                </li>
+              </ul>
             </div>
 
             <h2 class="text-4xl font-extrabold tracking-tight">{{ cities }}</h2>
@@ -62,7 +62,9 @@ import { useStore } from '../store';
 import { TransitionRoot } from '@headlessui/vue'
 import { ClockIcon, XIcon, CalendarIcon } from "@heroicons/vue/outline";
 import RecentDialog from '../components/RecentDialog.vue'
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const store = useStore()
 const isShowing = ref(true)
 const isOpen = ref(false)
@@ -90,6 +92,11 @@ const openModal = () => {
   console.log('isOpen')
   isOpen.value = true
 }
+
+const gotoForecast = () => {
+  router.push({ path: 'forecast' })
+}
+// 
 
 onMounted(() => {
   isShowing.value = false
