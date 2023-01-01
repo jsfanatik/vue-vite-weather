@@ -7,12 +7,12 @@
             
             <div class="absolute inset-y-0 right-0 top-4 w-14">
               <ul class="flex gap-x-2">
-                <!-- <li class="flex cursor-pointer" @click="openModal">
-                  <ClockIcon class="w-8 h-8 text-white"/>
-                </li> -->
                 <li class="flex cursor-pointer" @click="goToRecent">
-                  <CalendarIcon class="w-8 h-8 text-white"/>
+                  <ClockIcon class="w-8 h-8 text-white"/>
                 </li>
+                <!-- <li class="flex cursor-pointer" @click="goToRecent">
+                  <CalendarIcon class="w-8 h-8 text-white"/>
+                </li> -->
               </ul>
             </div>
 
