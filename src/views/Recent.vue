@@ -3,16 +3,6 @@
 
     <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
       <div v-for="city in cityData" :key="city.id" style="background-color: rgba(255, 255, 255, 0.2);" class="group relative text-white rounded-md p-4 cursor-pointer hover:shadow-2xl">
-        <!-- <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-          <img :src="product.imageSrc" :alt="product.imageAlt" class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
-        </div> -->
-        <!-- <div class="absolute inset-y-0 right-0 top-2 w-12">
-          <ul class="flex">
-            <li class="flex cursor-pointer">
-              <ArrowCircleRightIcon class="w-8 h-8 text-white"/>
-            </li>
-          </ul>
-        </div> -->
         <div>
           <h2 class="text-xl font-extrabold tracking-tight">{{ city.name }} ({{ city.zip }})</h2>
           <!-- <p class="mt-2">{{ dateTime }}</p> -->
@@ -23,7 +13,6 @@
             </div>
           </dl>
         </div>
-
       </div>
     </div>
   </div>
@@ -31,7 +20,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from "vue";
-import { ArrowCircleRightIcon } from "@heroicons/vue/outline";
+import { FireIcon, LightningBoltIcon, MoonIcon, SunIcon } from "@heroicons/vue/outline";
 import { useRouter } from "vue-router";
 import { useStore } from "../store";
 import axios from "axios";
@@ -53,7 +42,8 @@ const weatherValues = computed(() => {
 });
 
 // const goToCity = (city) => {
-//   router.push({ path: 'weather', params: { zip: city.zip }})
+//   console.log(city)
+//   router.push({ name: 'Weather', params: { zip: city.zip }})
 // }
 
 onMounted(async () => {

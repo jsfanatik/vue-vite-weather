@@ -10,7 +10,7 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-25" />
+        <div class="fixed inset-0 bg-black bg-opacity-50" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
@@ -27,28 +27,49 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
-              <div class="px-2 py-5 sm:px-6 border-b-4 mb-4">
-                <span class="text-2xl font-medium leading-6 text-gray-900">Recent Search</span>
+              <div class="overflow-x-auto relative">
+                <div class="px-2 py-5 sm:px-6 border-b-4 mb-4">
+                  <span class="text-md font-medium leading-6 text-gray-900">Recent Search (up to 5)</span>
+                </div>
+                <div class="absolute inset-y-0 right-0 top-4 w-14">
+              <ul class="flex gap-x-2">
+                <li @click="clearStorage" class="flex cursor-pointer">
+                  <RefreshIcon class="w-7 h-7"/>
+                </li>
+              </ul>
+            </div>
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
+                      <tr>
+                        <th scope="col" class="py-3 px-6">
+                            City
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Zip Code
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Temp
+                        </th>
+                      </tr>
+                    </thead>
+                  <tbody>
+                    <tr v-for="recentCity in recentCities" :key="recentCity.id" @click="openRecent(recentCity)" class="bg-white border-b hover:shadow-2xl hover:bg-gray-100 cursor-pointer">
+                      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                          {{ recentCity.name }}
+                      </th>
+                      <td class="py-4 px-6">
+                          {{ recentCity.zip }}
+                      </td>
+                      <td class="py-4 px-6">
+                          {{ recentCity.data.temp }}&#176;
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
-              <dl v-for="recentCity in recentCities" :key="recentCity.id">
-                <div class="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                  <dt class="text-md font-medium text-gray-500">{{ recentCity }}</dt>
-                  <dd
-                    class="mt-1 text-sm text-gray-900 sm:justify-self-end sm:col-span-2 sm:mt-0"
-                  >
-                    <button
-                      @click="openRecent(recentCity)"
-                      type="button"
-                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    >
-                      Open
-                    </button>
-                  </dd>
-                </div>
-              </dl>
             </DialogPanel>
           </TransitionChild>
         </div>
@@ -59,6 +80,7 @@
 
 <script setup>
 import { ref, toRefs, computed, onMounted } from 'vue'
+import { useRouter } from "vue-router";
 import { useStore } from "../store";
 import axios from "axios";
 import {
@@ -68,8 +90,10 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
+import { RefreshIcon } from "@heroicons/vue/outline";
 
 const store = useStore();
+const router = useRouter();
 const props = defineProps({
   isOpen: Boolean,
 })
@@ -85,19 +109,14 @@ const closeModal = () => {
   emit('closeModal')
 }
 
-const openRecent = async (recent) => {
-  try {
-    // after forking, add your OpenWeatherMap key to the URL
-    const res = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${recent}&appid=d2c9aaafb6c5d4d2632592ce88154c5f&units=imperial`
-    );
-    store.cities = res.data.name;
-    store.weatherData = res.data.main;
-    // router.push({ name: "Weather" });
-  } catch (error) {
-    // router.push({ name: "Error" });
-    console.log(error);
-  }
+const clearStorage = () => {
+  localStorage.clear()
+  router.push({ name: "Welcome" });
+}
+
+const openRecent = (recentCity) => {
+  // updates weather values wnen opening a recent search
+  store.searchWeather(recentCity.zip)
   emit('closeModal')
 };
 </script>

@@ -18,12 +18,12 @@ const routes = [
     component: Weather,
     props: true
   },
-  {
-    path: "/recent",
-    name: "Recent",
-    component: Recent,
-    props: true
-  },
+  // {
+  //   path: "/recent",
+  //   name: "Recent",
+  //   component: Recent,
+  //   props: true
+  // },
   // {
   //   path: "/forecast",
   //   name: "Forecast",
