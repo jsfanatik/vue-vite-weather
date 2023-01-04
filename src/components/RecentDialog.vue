@@ -29,41 +29,45 @@
             <DialogPanel
               class="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
-              <div class="overflow-x-auto relative">
+              <div v-if="store.recentSearches.length === 0">
+                <span>
+                  Search Cleared
+                </span>
+              </div>
+              <div v-else class="overflow-x-auto relative">
                 <div class="px-2 py-5 sm:px-6 border-b-4 mb-4">
                   <span class="text-md font-medium leading-6 text-gray-900">Recent Search (up to 5)</span>
                 </div>
-                <div class="absolute inset-y-0 right-0 top-4 w-14">
-              <ul class="flex gap-x-2">
-                <li @click="clearStorage" class="flex cursor-pointer">
-                  <RefreshIcon class="w-7 h-7"/>
-                </li>
-              </ul>
-            </div>
+                <div class="absolute inset-y-0 right-8 top-4 w-14">
+                  <ul class="flex gap-x-2">
+                    <li @click="clearStorage" class="flex cursor-pointer">
+                      <!-- <RefreshIcon class="w-7 h-7"/> -->
+                      <!-- <span class="border border-black p-1.5 rounded-md hover:bg-gray-400 hover:text-white hover:border-white">Clear</span> -->
+                      <button type="button" class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:hover:bg-blue-700 focus:outline-none">
+                        Clear
+                      </button>
+
+                    </li>
+                  </ul>
+                </div>
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
-                      <tr>
-                        <th scope="col" class="py-3 px-6">
-                            City
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            Zip Code
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            Temp
-                        </th>
-                      </tr>
-                    </thead>
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="py-3 px-6">
+                          City
+                      </th>
+                      <th scope="col" class="py-3 px-6">
+                          Zip Code
+                      </th>
+                    </tr>
+                  </thead>
                   <tbody>
-                    <tr v-for="recentCity in recentCities" :key="recentCity.id" @click="openRecent(recentCity)" class="bg-white border-b hover:shadow-2xl hover:bg-gray-100 cursor-pointer">
+                    <tr v-for="recentCity in store.recentSearches" :key="recentCity.id" @click="openRecent(recentCity)" class="bg-white border-b hover:shadow-2xl hover:bg-gray-100 cursor-pointer">
                       <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                           {{ recentCity.name }}
                       </th>
                       <td class="py-4 px-6">
                           {{ recentCity.zip }}
-                      </td>
-                      <td class="py-4 px-6">
-                          {{ recentCity.data.temp }}&#176;
                       </td>
                     </tr>
                   </tbody>
@@ -79,7 +83,7 @@
 </template>
 
 <script setup>
-import { ref, toRefs, computed, onMounted } from 'vue'
+import { ref, toRefs, onMounted } from 'vue'
 import { useRouter } from "vue-router";
 import { useStore } from "../store";
 import axios from "axios";
@@ -101,16 +105,18 @@ const { isOpen } = toRefs(props)
 
 const emit = defineEmits(['closeModal'])
 
-const recentCities = computed(() => {
-  return store.recentSearches;
-});
-
 const closeModal = () => {
   emit('closeModal')
 }
 
 const clearStorage = () => {
-  localStorage.clear()
+  store.cityZip = null
+  store.cities = {}
+  store.weatherData = {}
+  store.conditions.description = null    
+  store.dateTime = null
+  store.recentSearches.length = 0
+  store.error = null
   router.push({ name: "Welcome" });
 }
 

@@ -7,8 +7,10 @@ export const useStore = defineStore({
     cityZip: null,
     cities: {},
     weatherData: {},
+    conditions: null,
     dateTime: null,
-    recentSearches: []
+    recentSearches: [],
+    error: null
   }),
   getters: {
     roundedValues: (state) => {
@@ -20,7 +22,6 @@ export const useStore = defineStore({
     }
   },
   actions: {
-    // open dialog forces API call to update all values
     async searchWeather(zipValue) {
       try {
         const res = await axios.get(
@@ -29,27 +30,36 @@ export const useStore = defineStore({
         this.cityZip = zipValue
         this.cities = res.data.name;
         this.weatherData = res.data.main;
-        const date = Date(res.data.dt).toLocaleString("en-US");
-        this.dateTime = date
+        this.dateTime = Date(res.data.dt).toLocaleString("en-US");
+
+        const condition = res.data.weather.map(elm => {
+          return {
+            description: elm.description,
+          }
+        })
+
+        for (const value of condition.values()) {
+          this.conditions = value
+        }
+                
         this.storeRecentSearch();
       } catch (error) {
-        console.log(error);
+        // this.router.push({ name: 'Error' }); 
+        this.error = error
+        console.log(error, 'error');
       }
     },
     storeRecentSearch() {
       const allSearches = []
-      // allSearches.push(this.cityZip)
       allSearches.push({ name: this.cities, zip: this.cityZip, data: this.roundedValues })
 
       allSearches.forEach((item) => {
-        // console.log(item)
         if (!this.recentSearches.find(e => e.zip === item.zip)) {
           this.recentSearches.unshift(item)
 
           if (this.recentSearches.length > 5) {
             this.recentSearches.pop()
           }
-          // console.log('unshift', this.recentSearches)
         }
       })
     }

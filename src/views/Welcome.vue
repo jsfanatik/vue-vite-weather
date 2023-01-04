@@ -1,25 +1,16 @@
 <template>  
   <div class="flex min-h-screen items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-2xl space-y-8">
-      <!-- <div class="p-5 flex flex-wrap justify-center items-center gap-2"> -->
-        <h2 class="-mt-24 text-center text-6xl font-bold tracking-tight text-white">Weather Search
-        </h2>
-        <!-- <LightningBoltIcon class="w-24 h-24 text-white"/> -->
-      <!-- </div> -->
+    <div class="w-full max-w-lg space-y-8">
+      <h2 class="-mt-24 text-center text-6xl font-bold tracking-tight text-white">Weather Search
+      </h2>
       <div>
-      <!-- <form class="space-y-6" action="#" method="POST"> -->
         <input type="hidden" name="remember" value="true" />
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
-            <!-- <label for="email-address" class="sr-only">Email address</label> -->
-            <input @keypress="search" type="text" v-model="cityZip" maxlength="5" pattern="\d*" class="block w-full max-w-2xl rounded-md drop-shadow-2xl px-4 py-4 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none sm:text-sm" placeholder="Enter Zip Code Here..." />
+            <input @keypress="search" type="text" v-model="cityZip" maxlength="5" pattern="\d*" class="block w-full max-w-lg rounded-md drop-shadow-2xl px-4 py-4 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none sm:text-sm" placeholder="Enter 5-digit Zip Code Here..." />
           </div>
         </div>
-        <!-- </form> -->
       </div>
-      
-      <!-- <LightningBoltIcon class="w-24 h-24 text-white"/> -->
-
     </div>
   </div>
 </template>
@@ -39,7 +30,11 @@ const store = useStore();
 const search = async (e) => {
   if (e.key == "Enter") {
     await store.searchWeather(cityZip.value)
-    router.push({ name: "Weather" });
+    if (store.error) {
+      router.push({ name: "Error" });
+    } else {
+      router.push({ name: 'Weather' })
+    }
     cityZip.value = "";
   }
 };
