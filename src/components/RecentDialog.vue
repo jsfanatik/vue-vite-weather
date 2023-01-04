@@ -40,7 +40,7 @@
                 </div>
                 <div class="absolute inset-y-0 right-8 top-4 w-14">
                   <ul class="flex gap-x-2">
-                    <li @click="clearStorage" class="flex cursor-pointer">
+                    <li @click="clearStore" class="flex cursor-pointer">
                       <!-- <RefreshIcon class="w-7 h-7"/> -->
                       <!-- <span class="border border-black p-1.5 rounded-md hover:bg-gray-400 hover:text-white hover:border-white">Clear</span> -->
                       <button type="button" class="text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:hover:bg-blue-700 focus:outline-none">
@@ -109,7 +109,7 @@ const closeModal = () => {
   emit('closeModal')
 }
 
-const clearStorage = () => {
+const clearStore = () => {
   store.cityZip = null
   store.cities = {}
   store.weatherData = {}
