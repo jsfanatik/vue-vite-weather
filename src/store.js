@@ -13,6 +13,7 @@ export const useStore = defineStore({
     error: null
   }),
   getters: {
+    // rounds weather data to the nearest whole number
     roundedValues: (state) => {
       const roundData = {}
       Object.keys(state.weatherData).map(key => {
@@ -22,6 +23,7 @@ export const useStore = defineStore({
     }
   },
   actions: {
+    // searchWeather function receives inputted zip code as argument, calls API, and stores weather values for selected zip code
     async searchWeather(zipValue) {
       try {
         const res = await axios.get(
@@ -44,11 +46,11 @@ export const useStore = defineStore({
                 
         this.storeRecentSearch();
       } catch (error) {
-        // this.router.push({ name: 'Error' }); 
         this.error = error
         console.log(error, 'error');
       }
     },
+    // handles storing of up to 5 recently searched zip codes
     storeRecentSearch() {
       const allSearches = []
       allSearches.push({ name: this.cities, zip: this.cityZip, data: this.roundedValues })

@@ -1,17 +1,42 @@
 <template>
   <div>
-    <nav class="sticky top-0 py-8 px-2 z-40 sm:px-2">
+    <nav class="sticky top-4 py-8 px-2 z-40 sm:px-2">
         <div class="flex flex-wrap items-center justify-center mx-auto">  
-          <input @keypress="search" type="text" v-model="cityZip" maxlength="5" pattern="\d*" class="block w-full max-w-md rounded-md drop-shadow-2xl px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none sm:text-sm" placeholder="Enter 5-digit Zip Code Here..." />
+          <input 
+            @keypress="search" 
+            type="text" 
+            v-model="cityZip" 
+            maxlength="5" 
+            pattern="\d*" 
+            class="block 
+            w-72 
+            rounded-md 
+            drop-shadow-2xl 
+            px-3 
+            py-2 
+            text-gray-900 
+            placeholder-gray-500 
+            focus:z-10 
+            focus:outline-none 
+            sm:text-sm" 
+            placeholder="Enter 5-digit Zip Code Here..." 
+          />
         </div>
       </nav>
 
     <div class="mx-auto max-w-4xl px-6 mt-4">
       <div class="text-left">        
         <div class="p-6">
-
-          <div style="background-color: rgba(255, 255, 255, 0.2);" class="relative text-white h-full p-12 shadow-2xl overflow-hidden sm:rounded-lg">
-            
+          <div 
+            style="background-color: rgba(255, 255, 255, 0.2);" 
+            class="relative 
+            text-white 
+            h-full 
+            p-12 
+            shadow-2xl 
+            overflow-hidden 
+            sm:rounded-lg"
+          >
             <div class="absolute inset-y-0 right-0 top-4 w-14">
               <ul class="flex gap-x-2">
                 <li class="flex cursor-pointer" @click="openModal(store.cityZip)">
@@ -42,7 +67,6 @@
             </dl>
           </div>
 
-          <!-- TODO: configure open function to update temp value displayed in recentDialog-->
           <RecentDialog :isOpen="isOpen" @closeModal="closeModal"/>
 
         </div>
@@ -52,10 +76,9 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useStore } from '../store';
-import { TransitionRoot } from '@headlessui/vue'
-import { ClockIcon, XIcon, CalendarIcon, FireIcon, LightningBoltIcon, MoonIcon, SunIcon } from "@heroicons/vue/outline";
+import { ClockIcon } from "@heroicons/vue/outline";
 import RecentDialog from '../components/RecentDialog.vue'
 import { useRouter } from "vue-router";
 
@@ -70,14 +93,8 @@ const closeModal = () => {
 }
 
 const openModal = (zip) => {
-  console.log('isOpen')
-  // updates weatherValues when opening RecentDialog
   store.searchWeather(zip)
   isOpen.value = true
-}
-
-const goToRecent = () => {
-  router.push({ path: 'recent' })
 }
 
 const search = async (e) => {
