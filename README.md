@@ -1,4 +1,4 @@
-# Weather Search App with Vue 3 + OpenWeatherMap API
+# Weather Search App with Vue 3, Pinia, and OpenWeatherMap API
 
 #### Enter a US Zip Code to search for weather by city. Click the recently searched (clock) icon to view all your searches (stored locally with the help of Pinia state management)
 
