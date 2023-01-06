@@ -4,6 +4,8 @@
 
 <img width="800" alt="Screen Shot 2022-10-01 at 3 02 30 PM" src="https://github.com/jsfanatik/vue-vite-weather/blob/main/src/assets/Screen%20Shot%202023-01-05%20at%206.44.31%20PM.png">
 
+<img width="800" alt="Screen Shot 2022-10-01 at 3 02 30 PM" src="https://github.com/jsfanatik/vue-vite-weather/blob/main/src/assets/Screen%20Shot%202023-01-05%20at%208.19.55%20PM.png">
+
 ## Project setup
 ```
 npm install
