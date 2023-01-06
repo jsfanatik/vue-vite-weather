@@ -27,7 +27,7 @@ export const useStore = defineStore({
     async searchWeather(zipValue) {
       try {
         const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue},US&appid=d2c9aaafb6c5d4d2632592ce88154c5f&units=imperial`
+          `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue},US&appid={youopenweathermapapikeyhere}&units=imperial`
         );
         this.cityZip = zipValue
         this.cities = res.data.name;
