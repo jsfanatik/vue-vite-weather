@@ -2,7 +2,7 @@
   <div class="min-h-full">
     <div id="app"
       class="min-h-screen"
-      :class="store.roundedValues.temp > 60 ? 'warm' : 'cold'"
+      :class="store.roundedValues.temp > 59 ? 'warm' : 'cold'"
     >
       <div>
         <router-view />
