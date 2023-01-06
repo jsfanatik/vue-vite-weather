@@ -50,11 +50,11 @@
             <dl class="mt-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-10 lg:gap-x-8">
               <div class="border-t border-gray-200 pt-4">
                 <dt class="font-large text-md">Temp</dt>
-                <dd class="mt-2 font-medium text-8xl"> {{ store.roundedValues.temp }}&#176;</dd>
+                <dd class="mt-2 font-medium text-8xl"> {{ store.roundedValues.temp }}&#176;F</dd>
               </div>
               <div class="border-t border-gray-200 pt-4">
                 <dt class="font-medium text-md">Max/Min</dt>
-                <dd class="mt-2 text-5xl">{{ store.roundedValues.temp_max }}&#176;/ {{ store.roundedValues.temp_min }}&#176;</dd>
+                <dd class="mt-2 text-5xl">{{ store.roundedValues.temp_max }}&#176;F/ {{ store.roundedValues.temp_min }}&#176;F</dd>
               </div>
               <div class="border-t border-gray-200 pt-4">
                 <dt class="font-medium text-md">Condition</dt>
