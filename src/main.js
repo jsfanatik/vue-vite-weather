@@ -1,5 +1,5 @@
 import { createPinia } from 'pinia'
-import { createApp, watch, markRaw } from 'vue'
+import { createApp, watch } from 'vue'
 import App from './App.vue'
 import './index.css'
 import router from './router'
