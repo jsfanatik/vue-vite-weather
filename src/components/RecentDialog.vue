@@ -29,12 +29,12 @@
             <DialogPanel
               class="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
-              <div v-if="store.recentSearches.length === 0">
+              <!-- <div v-if="store.recentSearches.length === 0">
                 <span>
                   Search Cleared
                 </span>
-              </div>
-              <div v-else class="overflow-x-auto relative">
+              </div> -->
+              <div class="overflow-x-auto relative">
                 <div class="px-2 py-5 sm:px-6 border-b-4 mb-4">
                   <span class="text-md font-medium leading-6 text-gray-900">Recent Search (up to 5)</span>
                 </div>
@@ -81,10 +81,9 @@
 </template>
 
 <script setup>
-import { ref, toRefs, onMounted } from 'vue'
-import { useRouter } from "vue-router";
+import { toRefs } from 'vue'
 import { useStore } from "../store";
-import axios from "axios";
+import { useRouter } from "vue-router";
 import {
   TransitionRoot,
   TransitionChild,
@@ -92,7 +91,6 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
-import { RefreshIcon } from "@heroicons/vue/outline";
 
 const store = useStore();
 const router = useRouter();
@@ -119,7 +117,6 @@ const clearStore = () => {
 }
 
 const openRecent = (recentCity) => {
-  // updates weather values wnen opening a recent search
   store.searchWeather(recentCity.zip)
   emit('closeModal')
 };

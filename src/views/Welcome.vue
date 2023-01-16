@@ -39,9 +39,11 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "../store";
 
-const cityZip = ref("");
 const router = useRouter();
 const store = useStore();
+const cityZip = ref("");
+
+console.log(store.recentSearches)
 
 const search = async (e) => {
   if (e.key == "Enter") {

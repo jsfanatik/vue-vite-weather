@@ -39,7 +39,7 @@
           >
             <div class="absolute inset-y-0 right-0 top-4 w-14">
               <ul class="flex gap-x-2">
-                <li class="flex cursor-pointer" @click="openModal(store.cityZip)">
+                <li class="flex cursor-pointer" @click="openModal">
                   <ClockIcon class="w-8 h-8 text-white"/>
                 </li>
               </ul>
@@ -78,9 +78,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useStore } from '../store';
+import { useRouter } from "vue-router";
 import { ClockIcon } from "@heroicons/vue/outline";
 import RecentDialog from '../components/RecentDialog.vue'
-import { useRouter } from "vue-router";
 
 const router = useRouter();
 const store = useStore()
@@ -88,14 +88,13 @@ const isShowing = ref(true)
 const isOpen = ref(false)
 const cityZip = ref("");
 
-const closeModal = () => {
-  isOpen.value = false
-}
-
-const openModal = (zip) => {
-  store.searchWeather(zip)
+const openModal = () => {
   isOpen.value = true
 }
+
+const closeModal = () => {
+  isOpen.value = false
+} 
 
 const search = async (e) => {
   if (e.key == "Enter") {

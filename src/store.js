@@ -27,9 +27,9 @@ export const useStore = defineStore({
     async searchWeather(zipValue) {
       try {
         const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue},US&appid={youopenweathermapapikeyhere}&units=imperial`
+          `https://api.openweathermap.org/data/2.5/weather?zip=${zipValue},US&appid=6108bb4a078ca4183c2ba0ae23f0deac&units=imperial`
         );
-        this.cityZip = zipValue
+        this.cityZip = zipValue;
         this.cities = res.data.name;
         this.weatherData = res.data.main;
         this.dateTime = Date(res.data.dt).toLocaleString("en-US");
@@ -53,7 +53,13 @@ export const useStore = defineStore({
     // handles storing of up to 5 recently searched zip codes
     storeRecentSearch() {
       const allSearches = []
-      allSearches.push({ name: this.cities, zip: this.cityZip, data: this.roundedValues })
+      allSearches.push(
+        { 
+          name: this.cities, 
+          zip: this.cityZip, 
+          data: this.roundedValues 
+        }
+      )
 
       allSearches.forEach((item) => {
         if (!this.recentSearches.find(e => e.zip === item.zip)) {
@@ -62,6 +68,7 @@ export const useStore = defineStore({
           if (this.recentSearches.length > 5) {
             this.recentSearches.pop()
           }
+          console.log(this.recentSearches)
         }
       })
     }
