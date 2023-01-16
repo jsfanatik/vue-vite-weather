@@ -4,7 +4,7 @@
 
 <img width="800" alt="Screen Shot 2022-10-01 at 3 02 30 PM" src="https://github.com/jsfanatik/vue-vite-weather/blob/main/src/assets/alexandria-cold.png">
 
-<img width="800" alt="Screen Shot 2022-10-01 at 3 02 30 PM" src="https://github.com/jsfanatik/vue-vite-weather/blob/main/src/assets/Screen%20Shot%202023-01-15%20at%2010.41.14%20PM.png">
+<img width="800" alt="Screen Shot 2022-10-01 at 3 02 30 PM" src="https://github.com/jsfanatik/vue-vite-weather/blob/main/src/assets/fort-worth-warm.png">
 
 ## Project setup
 ```
