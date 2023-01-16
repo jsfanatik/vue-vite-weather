@@ -62,7 +62,7 @@
               </div>
               <div class="border-t border-gray-200 pt-4">
                 <dt class="font-medium text-md">Humidity</dt>
-                <dd class="mt-2 text-5xl">{{ store.roundedValues.humidity }}&#37;</dd>
+                <dd class="mt-2 text-5xl">{{ store.weatherData.humidity }}&#37;</dd>
               </div>
             </dl>
           </div>
@@ -104,5 +104,6 @@ const search = async (e) => {
     }
     cityZip.value = "";
   }
+  console.log(store.recentSearches)
 };
 </script>
