@@ -54,7 +54,7 @@
               </div>
               <div class="border-t border-gray-200 pt-4">
                 <dt class="font-medium text-md">Max/Min</dt>
-                <dd class="mt-2 text-5xl">{{ store.roundedValues.temp_max }}&#176;F/ {{ store.roundedValues.temp_min }}&#176;F</dd>
+                <dd class="mt-2 text-5xl">{{ store.roundedValues.temp_max }}&#176;F/{{ store.roundedValues.temp_min }}&#176;F</dd>
               </div>
               <div class="border-t border-gray-200 pt-4">
                 <dt class="font-medium text-md">Condition</dt>
